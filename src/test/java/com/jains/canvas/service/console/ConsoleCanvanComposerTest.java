@@ -7,6 +7,8 @@ import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.mockito.runners.MockitoJUnitRunner;
 
+import java.util.Collections;
+
 import static org.junit.Assert.assertEquals;
 
 @RunWith(MockitoJUnitRunner.class)
@@ -15,24 +17,25 @@ public class ConsoleCanvanComposerTest {
 
     @Before
     public void setUp() {
-        consoleCanvasComposer = new ConsoleCanvasComposer("-", "|");
+        consoleCanvasComposer = new ConsoleCanvasComposer('-', '|');
     }
 
     @Test
     public void whenComposeCanvasThenReturnPlotString() {
         StringBuilder expected = new StringBuilder();
         expected
-                .append("----")
+                .append(String.join("", Collections.nCopies(20, "-")))
                 .append("\n")
-                .append("|  |")
+                .append(String.format("|%18s|"," "))
                 .append("\n")
-                .append("|  |")
+                .append(String.format("|%18s|"," "))
                 .append("\n")
-                .append("|  |")
+                .append(String.format("|%18s|"," "))
                 .append("\n")
-                .append("----");
+                .append(String.join("", Collections.nCopies(20, "-")))
+                .append("\n");
         assertEquals(expected.toString(),
-                consoleCanvasComposer.compose(new Canvas(3, 4)));
+                consoleCanvasComposer.compose(new Canvas(3, 20)));
     }
 
     @Test(expected = IllegalArgumentException.class)
