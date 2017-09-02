@@ -40,7 +40,7 @@ public class ConsoleCanvasComposerTest {
                 .append(String.join("", Collections.nCopies(20, "-")))
                 .append("\n");
         assertEquals(expected.toString(),
-                consoleCanvasComposer.compose(new Canvas(4, 20)).getComposedCanvas());
+                consoleCanvasComposer.compose(new Canvas(20, 4)).getComposedCanvas());
     }
 
     @Test
@@ -60,7 +60,7 @@ public class ConsoleCanvasComposerTest {
                 .format("\n")
                 .format(String.join("", Collections.nCopies(20, "-")))
                 .format("\n");
-        final Canvas canvas = new Canvas(4, 20);
+        final Canvas canvas = new Canvas(20, 4);
         canvas.addLine(new Line(1, 2, 6, 2));
         assertEquals(expected.toString(),
                 consoleCanvasComposer.compose(canvas).getComposedCanvas());
@@ -83,7 +83,7 @@ public class ConsoleCanvasComposerTest {
                 .format("\n")
                 .format(String.join("", Collections.nCopies(20, "-")))
                 .format("\n");
-        final Canvas canvas = new Canvas(4, 20);
+        final Canvas canvas = new Canvas(20, 4);
         canvas.addLine(new Line(6, 3, 6, 4));
         assertEquals(expected.toString(),
                 consoleCanvasComposer.compose(canvas).getComposedCanvas());
@@ -107,7 +107,7 @@ public class ConsoleCanvasComposerTest {
                 .format("\n")
                 .format(String.join("", Collections.nCopies(20, "-")))
                 .format("\n");
-        final Canvas canvas = new Canvas(4, 20);
+        final Canvas canvas = new Canvas(20, 4);
         canvas.addRectangle(new Rectangle(1, 2, 5, 4));
         assertEquals(expected.toString(),
                 consoleCanvasComposer.compose(canvas).getComposedCanvas());
@@ -130,7 +130,7 @@ public class ConsoleCanvasComposerTest {
                 .format("\n")
                 .format(String.join("", Collections.nCopies(20, "-")))
                 .format("\n");
-        final Canvas canvas = new Canvas(4, 20);
+        final Canvas canvas = new Canvas(20, 4);
         canvas.addRectangle(new Rectangle(1, 2, 5, 4));
         canvas.setFillBucket(new Bucket(10, 3, '$'));
         assertEquals(expected.toString(),

@@ -40,8 +40,8 @@ public class ConsoleCommandParserTest {
     @Test()
     public void whenCanvasCommandThenReturnCanvasObject() throws InvalidCommandException {
         Canvas canvas = parseCommandToCanvas(null, "C 8 10");
-        assertEquals(canvas.getHeight(), 8);
-        assertEquals(canvas.getWidth(), 10);
+        assertEquals(canvas.getHeight(), 10);
+        assertEquals(canvas.getWidth(), 8);
     }
 
     @Test()

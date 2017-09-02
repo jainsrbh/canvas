@@ -25,15 +25,17 @@ public class ConsoleCanvasService implements CanvasService<String>, CommandLineR
         System.out.println("Select command:" + Command.printString());
         String input = null;
         try (Scanner scanner = new Scanner(System.in)) {
-            do {
+            input = scanner.nextLine();
+            while (!Command.Q.name().equals(input)) {
                 try {
-                    input = scanner.nextLine();
                     canvas = ConsoleCommandParser.parseCommandToCanvas(canvas, input);
                     plotCanvas(canvasComposer, canvasPlotter, canvas);
                 } catch (Exception exception) {
-                    System.out.println(exception.getMessage());
+                    System.out.println("Exception:" + exception.getMessage());
                 }
-            } while (!Command.Q.name().equals(input));
+                System.out.println("Select command:" + Command.printString());
+                input = scanner.nextLine();
+            }
         }
     }
 }

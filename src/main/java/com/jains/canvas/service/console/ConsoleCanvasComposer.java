@@ -21,7 +21,7 @@ public class ConsoleCanvasComposer implements CanvasComposer<String> {
     public ComposedCanvas<String> compose(Canvas canvas) {
         //draw canvas
         final int height = canvas.getHeight() + 2;
-        final int width = canvas.getWidth();
+        final int width = canvas.getWidth() + 2;
         char[][] canvasArray = new char[height][width];
         composeCanvas(height, width, canvasArray);
         fillBucket(canvas, canvasArray);

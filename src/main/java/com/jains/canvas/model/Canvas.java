@@ -17,7 +17,7 @@ public class Canvas {
     private Bucket bucket;
 
     @Builder
-    public Canvas(int height, int width) throws IllegalArgumentException {
+    public Canvas(int width, int height) throws IllegalArgumentException {
         if (height <= 0 || width <= 0) {
             throw new IllegalArgumentException("Less than zero width/height are not allowed");
         }
