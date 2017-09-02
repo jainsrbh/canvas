@@ -1,16 +1,17 @@
 package com.jains.canvas;
 
-import java.util.Scanner;
-
+import com.jains.canvas.service.Command;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.stereotype.Component;
+
+import java.util.Scanner;
 
 @Component
 public class ConsoleExecutor implements CommandLineRunner {
 
 	@Override
 	public void run(String... args) throws Exception {
-		System.out.println("Select command:"+Command.printString());
+		System.out.println("Select command:" + Command.printString());
 		Command command = null;
 		try (Scanner scanner = new Scanner(System.in)) {
 			do {
