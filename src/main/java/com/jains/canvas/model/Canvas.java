@@ -1,23 +1,54 @@
 package com.jains.canvas.model;
 
-import lombok.AllArgsConstructor;
+import com.google.common.collect.Lists;
 import lombok.Builder;
-import lombok.Data;
+import lombok.EqualsAndHashCode;
+import lombok.Getter;
 
 import java.util.List;
 
-@Data
+@EqualsAndHashCode
+@Getter
 public class Canvas {
     private final int height;
     private final int width;
     private List<Line> lines;
+    private List<Rectangle> rectangles;
+    private Bucket bucket;
 
     @Builder
     public Canvas(int height, int width) throws IllegalArgumentException {
-        if (height < 0 || width < 0) {
-            throw new IllegalArgumentException("Less than zero widht/height are not allowed");
+        if (height <= 0 || width <= 0) {
+            throw new IllegalArgumentException("Less than zero width/height are not allowed");
         }
         this.height = height;
         this.width = width;
+    }
+
+    public void addLine(Line line) throws IllegalArgumentException {
+        if (line.getX2() > width || line.getY2() > height) {
+            throw new IllegalArgumentException("Line coordinates beyond canvas coordinates");
+        }
+        if (lines == null) {
+            lines = Lists.newArrayList();
+        }
+        lines.add(line);
+    }
+
+    public void addRectangle(Rectangle rectangle) throws IllegalArgumentException {
+        if (rectangle.getX2() > width || rectangle.getY2() > height) {
+            throw new IllegalArgumentException("Rectangle coordinates beyond canvas coordinates");
+        }
+        if (rectangles == null) {
+            rectangles = Lists.newArrayList();
+        }
+        rectangles.add(rectangle);
+    }
+
+    public void setFillBucket(Bucket bucket) throws IllegalArgumentException {
+        if (bucket.getX() > width || bucket.getY() > height) {
+            throw new IllegalArgumentException("Bucket coordinates beyond canvas coordinates");
+        }
+        this.bucket = bucket;
     }
 }
