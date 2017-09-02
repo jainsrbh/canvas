@@ -1,9 +1,6 @@
 package com.jains.canvas.service.console;
 
-import com.jains.canvas.model.Bucket;
-import com.jains.canvas.model.Canvas;
-import com.jains.canvas.model.Line;
-import com.jains.canvas.model.Rectangle;
+import com.jains.canvas.model.*;
 import com.jains.canvas.service.CanvasComposer;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
@@ -21,7 +18,7 @@ public class ConsoleCanvasComposer implements CanvasComposer<String> {
     private final char lineChar;
 
     @Override
-    public String compose(Canvas canvas) {
+    public ComposedCanvas<String> compose(Canvas canvas) {
         //draw canvas
         final int height = canvas.getHeight() + 2;
         final int width = canvas.getWidth();
@@ -36,7 +33,10 @@ public class ConsoleCanvasComposer implements CanvasComposer<String> {
             sb.append(canvasArray[i]);
             sb.append("\n");
         }
-        return sb.toString();
+        return ConsoleComposedCanvas.builder()
+                .canvas(canvas)
+                .composedCanvas(sb.toString())
+                .build();
     }
 
     protected void composeCanvas(int height, int width, char[][] canvasArray) {
