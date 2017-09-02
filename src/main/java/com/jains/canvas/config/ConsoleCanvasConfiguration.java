@@ -7,15 +7,15 @@ import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 
 @Configuration
-public class ConsoleCanvasConfiguration{
+public class ConsoleCanvasConfiguration {
     @Bean(name = "consoleCanvasComposer")
     public ConsoleCanvasComposer canvasComposer() {
-		return new ConsoleCanvasComposer('-', '|','*');
-	}
+        return new ConsoleCanvasComposer('-', '|', '*');
+    }
 
     @Bean(name = "consoleCanvasPlotter")
     public ConsoleCanvasPlotter canvasPlotter() {
-		return new ConsoleCanvasPlotter();
+        return new ConsoleCanvasPlotter();
     }
 
     @Bean
@@ -23,5 +23,4 @@ public class ConsoleCanvasConfiguration{
                                               ConsoleCanvasPlotter canvasPlotter) {
         return new ConsoleCanvasService(canvasComposer, canvasPlotter);
     }
-
 }

@@ -8,7 +8,6 @@ import com.jains.canvas.service.Command;
 import org.springframework.boot.CommandLineRunner;
 
 import java.util.Scanner;
-import java.util.StringTokenizer;
 
 public class ConsoleCanvasService implements CanvasService<String>, CommandLineRunner {
     private final CanvasComposer<String> canvasComposer;
@@ -23,25 +22,18 @@ public class ConsoleCanvasService implements CanvasService<String>, CommandLineR
 
     @Override
     public void run(String... args) throws Exception {
-
-    }
-
-    @Override
-    public Canvas createCanvas() {
         System.out.println("Select command:" + Command.printString());
-        Command command = null;
+        String input = null;
         try (Scanner scanner = new Scanner(System.in)) {
             do {
                 try {
-                    final String input = scanner.nextLine();
-                    StringTokenizer tokenizer = new StringTokenizer(input, " ", false);
-                    command = Command.valueOf(tokenizer.nextToken());
-
-                } catch (IllegalArgumentException exception) {
-                    System.out.println("Invalid command, valid options are:" + Command.printString());
+                    input = scanner.nextLine();
+                    canvas = ConsoleCommandParser.parseCommandToCanvas(canvas, input);
+                    plotCanvas(canvasComposer, canvasPlotter, canvas);
+                } catch (Exception exception) {
+                    System.out.println(exception.getMessage());
                 }
-            } while (!Command.Q.equals(command));
+            } while (!Command.Q.name().equals(input));
         }
-        return null;
     }
 }
