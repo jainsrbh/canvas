@@ -27,17 +27,17 @@ public class ConsoleCanvasComposerTest {
     public void whenComposeCanvasThenReturnPlotString() {
         StringBuilder expected = new StringBuilder();
         expected
-                .append(String.join("", Collections.nCopies(20, "-")))
+                .append(String.join("", Collections.nCopies(22, "-")))
                 .append("\n")
-                .append(String.format("|%18s|", " "))
+                .append(String.format("|%20s|", " "))
                 .append("\n")
-                .append(String.format("|%18s|", " "))
+                .append(String.format("|%20s|", " "))
                 .append("\n")
-                .append(String.format("|%18s|", " "))
+                .append(String.format("|%20s|", " "))
                 .append("\n")
-                .append(String.format("|%18s|", " "))
+                .append(String.format("|%20s|", " "))
                 .append("\n")
-                .append(String.join("", Collections.nCopies(20, "-")))
+                .append(String.join("", Collections.nCopies(22, "-")))
                 .append("\n");
         assertEquals(expected.toString(),
                 consoleCanvasComposer.compose(new Canvas(20, 4)).getComposedCanvas());
@@ -48,17 +48,17 @@ public class ConsoleCanvasComposerTest {
         StringBuilder expected = new StringBuilder();
         Formatter formatter = new Formatter(expected);
         formatter
-                .format(String.join("", Collections.nCopies(20, "-")))
+                .format(String.join("", Collections.nCopies(22, "-")))
                 .format("\n")
-                .format("|%18s|", " ")
+                .format("|%20s|", " ")
                 .format("\n")
-                .format("|******%12s|", " ")
+                .format("|******%14s|", " ")
                 .format("\n")
-                .format("|%18s|", " ")
+                .format("|%20s|", " ")
                 .format("\n")
-                .format("|%18s|", " ")
+                .format("|%20s|", " ")
                 .format("\n")
-                .format(String.join("", Collections.nCopies(20, "-")))
+                .format(String.join("", Collections.nCopies(22, "-")))
                 .format("\n");
         final Canvas canvas = new Canvas(20, 4);
         canvas.addLine(new Line(1, 2, 6, 2));
@@ -71,17 +71,17 @@ public class ConsoleCanvasComposerTest {
         StringBuilder expected = new StringBuilder();
         Formatter formatter = new Formatter(expected);
         formatter
-                .format(String.join("", Collections.nCopies(20, "-")))
+                .format(String.join("", Collections.nCopies(22, "-")))
                 .format("\n")
-                .format("|%18s|", " ")
+                .format("|%20s|", " ")
                 .format("\n")
-                .format("|%18s|", " ")
+                .format("|%20s|", " ")
                 .format("\n")
-                .format("|%6s%12s|", "*", " ")
+                .format("|%6s%14s|", "*", " ")
                 .format("\n")
-                .format("|%6s%12s|", "*", " ")
+                .format("|%6s%14s|", "*", " ")
                 .format("\n")
-                .format(String.join("", Collections.nCopies(20, "-")))
+                .format(String.join("", Collections.nCopies(22, "-")))
                 .format("\n");
         final Canvas canvas = new Canvas(20, 4);
         canvas.addLine(new Line(6, 3, 6, 4));
@@ -95,17 +95,17 @@ public class ConsoleCanvasComposerTest {
         StringBuilder expected = new StringBuilder();
         Formatter formatter = new Formatter(expected);
         formatter
-                .format(String.join("", Collections.nCopies(20, "-")))
+                .format(String.join("", Collections.nCopies(22, "-")))
                 .format("\n")
-                .format("|%18s|", " ")
+                .format("|%20s|", " ")
                 .format("\n")
-                .format("|*****%13s|", " ")
+                .format("|*****%15s|", " ")
                 .format("\n")
-                .format("|*%4s%13s|", "*", " ")
+                .format("|*%4s%15s|", "*", " ")
                 .format("\n")
-                .format("|*****%13s|", " ")
+                .format("|*****%15s|", " ")
                 .format("\n")
-                .format(String.join("", Collections.nCopies(20, "-")))
+                .format(String.join("", Collections.nCopies(22, "-")))
                 .format("\n");
         final Canvas canvas = new Canvas(20, 4);
         canvas.addRectangle(new Rectangle(1, 2, 5, 4));
@@ -118,17 +118,17 @@ public class ConsoleCanvasComposerTest {
         StringBuilder expected = new StringBuilder();
         Formatter formatter = new Formatter(expected);
         formatter
-                .format(String.join("", Collections.nCopies(20, "-")))
+                .format(String.join("", Collections.nCopies(22, "-")))
                 .format("\n")
-                .format("|$$$$$$$$$$%8s|", " ")
+                .format("|$$$$$$$$$$%10s|", " ")
                 .format("\n")
-                .format("|*****$$$$$%8s|", " ")
+                .format("|*****$$$$$%10s|", " ")
                 .format("\n")
-                .format("|*%4s$$$$$%8s|", "*", " ")
+                .format("|*%4s$$$$$%10s|", "*", " ")
                 .format("\n")
-                .format("|*****%13s|", " ")
+                .format("|*****%15s|", " ")
                 .format("\n")
-                .format(String.join("", Collections.nCopies(20, "-")))
+                .format(String.join("", Collections.nCopies(22, "-")))
                 .format("\n");
         final Canvas canvas = new Canvas(20, 4);
         canvas.addRectangle(new Rectangle(1, 2, 5, 4));
