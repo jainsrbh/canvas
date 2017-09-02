@@ -9,6 +9,6 @@ import com.jains.canvas.service.console.ConsoleCanvasComposer;
 public class ConsoleCanvasConfiguration{
 	@Bean
 	public ConsoleCanvasComposer consoleCanvasComposer() {
-		return new ConsoleCanvasComposer('-', '|');
+		return new ConsoleCanvasComposer('-', '|','*');
 	}
 }

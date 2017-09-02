@@ -4,10 +4,13 @@ import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
 
+import java.util.List;
+
 @Data
 public class Canvas {
     private final int height;
     private final int width;
+    private List<Line> lines;
 
     @Builder
     public Canvas(int height, int width) throws IllegalArgumentException {
