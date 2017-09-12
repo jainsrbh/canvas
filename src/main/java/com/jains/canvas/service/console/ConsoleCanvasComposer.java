@@ -24,6 +24,7 @@ public class ConsoleCanvasComposer implements CanvasComposer<String> {
         final int width = canvas.getWidth() + 2;
         char[][] canvasArray = new char[height][width];
         composeCanvas(height, width, canvasArray);
+        //lines and rectangle should not be filled by bucket, hence fill bucket first
         fillBucket(canvas, canvasArray);
         composeLines(canvas, canvasArray);
         composeRectangle(canvas, canvasArray);
@@ -52,11 +53,13 @@ public class ConsoleCanvasComposer implements CanvasComposer<String> {
     }
 
     protected void fillBucket(Canvas canvas, char[][] canvasArray) {
-        final Bucket bucket = canvas.getBucket();
-        if (bucket != null) {
-            for (int y = 1; y <= bucket.getY(); y++) {
-                for (int x = 1; x <= bucket.getX(); x++) {
-                    canvasArray[y][x] = bucket.getColour();
+        //fill buckets
+        if (canvas.getBuckets() != null) {
+            for (Bucket bucket : canvas.getBuckets()) {
+                for (int y = 1; y <= bucket.getY(); y++) {
+                    for (int x = 1; x <= bucket.getX(); x++) {
+                        canvasArray[y][x] = bucket.getColour();
+                    }
                 }
             }
         }
@@ -76,7 +79,7 @@ public class ConsoleCanvasComposer implements CanvasComposer<String> {
     }
 
     protected void composeRectangle(Canvas canvas, char[][] canvasArray) {
-        //fill lines
+        //fill rectangle
         if (canvas.getRectangles() != null) {
             for (Rectangle rectangle : canvas.getRectangles()) {
                 for (int y = rectangle.getY1(); y <= rectangle.getY2(); y++) {

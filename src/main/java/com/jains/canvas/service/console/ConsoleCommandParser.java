@@ -9,8 +9,8 @@ import com.jains.canvas.service.InvalidCommandException;
 
 import java.util.StringTokenizer;
 
-public class ConsoleCommandParser {
-    public static Canvas parseCommandToCanvas(Canvas canvas, String input) throws InvalidCommandException {
+class ConsoleCommandParser {
+    static Canvas parseCommandToCanvas(Canvas canvas, String input) throws InvalidCommandException {
         StringTokenizer tokenizer = new StringTokenizer(input, " ", false);
         Command command = null;
         try {
@@ -49,7 +49,7 @@ public class ConsoleCommandParser {
                 }
                 break;
                 case B: {
-                    canvas.setFillBucket(new Bucket(
+                    canvas.addBucket(new Bucket(
                             Integer.parseInt(tokenizer.nextToken()),
                             Integer.parseInt(tokenizer.nextToken()),
                             tokenizer.nextToken().charAt(0)));

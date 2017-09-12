@@ -50,12 +50,12 @@ public class CanvasTest {
     @Test(expected = IllegalArgumentException.class)
     public void whenBucketIllegalValuesThenThrowException() {
         final Canvas canvas = new Canvas(4, 20);
-        canvas.setFillBucket(new Bucket(-4, -5, 't'));
+        canvas.addBucket(new Bucket(-4, -5, 't'));
     }
 
     @Test(expected = IllegalArgumentException.class)
     public void whenBucketBeyondCoordinatesValuesThenThrowException() {
         final Canvas canvas = new Canvas(4, 20);
-        canvas.setFillBucket(new Bucket(3, 21, 't'));
+        canvas.addBucket(new Bucket(3, 21, 't'));
     }
 }

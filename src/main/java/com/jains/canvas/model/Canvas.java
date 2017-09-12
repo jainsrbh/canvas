@@ -14,7 +14,7 @@ public class Canvas {
     private final int width;
     private List<Line> lines;
     private List<Rectangle> rectangles;
-    private Bucket bucket;
+    private List<Bucket> buckets;
 
     @Builder
     public Canvas(int width, int height) throws IllegalArgumentException {
@@ -45,10 +45,13 @@ public class Canvas {
         rectangles.add(rectangle);
     }
 
-    public void setFillBucket(Bucket bucket) throws IllegalArgumentException {
+    public void addBucket(Bucket bucket) throws IllegalArgumentException {
         if (bucket.getX() > width || bucket.getY() > height) {
             throw new IllegalArgumentException("Bucket coordinates beyond canvas coordinates");
         }
-        this.bucket = bucket;
+        if (buckets == null) {
+            buckets = Lists.newArrayList();
+        }
+        this.buckets.add(bucket);
     }
 }
