@@ -87,6 +87,30 @@ public class ConsoleCanvasComposerTest {
     }
 
     /**
+     * Test a canvas with multiple command lines
+     */
+    @Test
+    public void whenComposeCanvasWithLinesThenReturnPlotStringWithMultipleLines() {
+        int x = 20;
+        int y = 4;
+        StringBuilder expected = new StringBuilder();
+        Formatter formatter = new Formatter(expected)
+                .format(getCanvasXBorder(x))
+                .format(getCanvasYBorder(x, 1))
+                .format("|******%14s|", " ")
+                .format(NEW_LINE)
+                .format("|******%14s|", " ")
+                .format(NEW_LINE)
+                .format(getCanvasYBorder(x, 1))
+                .format(getCanvasXBorder(x));
+        final Canvas canvas = new Canvas(x, y);
+        canvas.addLine(new Line(1, 2, 6, 2));
+        canvas.addLine(new Line(1, 3, 6, 3));
+        assertEquals(expected.toString(),
+                consoleCanvasComposer.compose(canvas).getComposedCanvas());
+    }
+
+    /**
      * Test a canvas with multiple points
      */
     @Test
@@ -128,6 +152,31 @@ public class ConsoleCanvasComposerTest {
                 .format(getCanvasXBorder(x));
         final Canvas canvas = new Canvas(x, y);
         canvas.addRectangle(new Rectangle(1, 2, 5, 4));
+        assertEquals(expected.toString(),
+                consoleCanvasComposer.compose(canvas).getComposedCanvas());
+    }
+
+    /**
+     * Test a canvas with a multiple rectangles
+     */
+    @Test
+    public void whenComposeCanvasWithRectanglesThenReturnPlotStringWithRectangles() {
+        int x = 20;
+        int y = 4;
+        StringBuilder expected = new StringBuilder();
+        Formatter formatter = new Formatter(expected)
+                .format(getCanvasXBorder(x))
+                .format(getCanvasYBorder(x, 1))
+                .format("|*******%13s|", " ")
+                .format(NEW_LINE)
+                .format("|*   * *%13s|", " ")
+                .format(NEW_LINE)
+                .format("|*******%13s|", " ")
+                .format(NEW_LINE)
+                .format(getCanvasXBorder(x));
+        final Canvas canvas = new Canvas(x, y);
+        canvas.addRectangle(new Rectangle(1, 2, 5, 4));
+        canvas.addRectangle(new Rectangle(5, 2, 7, 4));
         assertEquals(expected.toString(),
                 consoleCanvasComposer.compose(canvas).getComposedCanvas());
     }
